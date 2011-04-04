@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:id="@+id/main"
+        >
+
+
+    <ListView
+            android:id="@+id/mainListView"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:cacheColorHint="#3500ffff"
+            android:layout_weight="1.0"
+
+            />
+
+    <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:padding="10dip"
+            >
+
+        <Button
+                android:id="@+id/addToListButton"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Add Item"
+                android:textStyle="bold"
+                android:textSize="18dip"
+                android:textColor="#000000"
+                android:drawableRight="@drawable/add"
+                android:drawablePadding="10dip"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip"
+                android:background="@drawable/round_button_states"
+                />
+    </RelativeLayout>
+
 </LinearLayout>
+
