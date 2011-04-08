@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/gradient_box"
+        >
+
+    <TextView android:id="@+id/shopping_list_item_text"
+              android:layout_height="fill_parent"
+              android:layout_width="wrap_content"
+              android:gravity="center_vertical|center_horizontal"
+              android:textSize="20dip"
+              android:textStyle="bold"
+              android:textColor="#FFFFFF"
+              android:layout_marginLeft="12dip"
+            />
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            >
+        <ImageView
+                android:id="@+id/edit_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/edit"
+                />
+        <ImageView
+                android:id="@+id/delete_icon"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_toRightOf="@id/edit_icon"
+                android:src="@drawable/delete"
+                />
+    </LinearLayout>
+</RelativeLayout>
+
