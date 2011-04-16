@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.database.SQLException;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,7 +15,6 @@ import android.widget.*;
 import com.brbware.shoppinglist.persistence.DatabaseHelper;
 import com.brbware.shoppinglist.persistence.entities.ShoppingList;
 import com.brbware.shoppinglist.persistence.entities.ShoppingListItem;
-import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 
 import java.util.ArrayList;
@@ -52,6 +49,22 @@ public class ListItemActivity extends Activity {
         mainListView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
 
         initAddButton(this);
+
+        if (mainListView.getAdapter().getCount() <= 0 )
+            setHintTextToVisible(true);
+        else
+            setHintTextToVisible(false);
+    }
+
+    private void setHintTextToVisible(Boolean setVisible) {
+
+        TextView backgroundView = (TextView) findViewById(R.id.mainListViewBackgroundText);
+
+        if (setVisible)
+            backgroundView.setVisibility(ListView.VISIBLE);
+        else
+            backgroundView.setVisibility(ListView.GONE);
+
     }
 
     private void initAddButton(final Context context) {
@@ -82,6 +95,8 @@ public class ListItemActivity extends Activity {
                         if (value.toString().equals("")) return;
 
                         shoppingListAdapterRef.add(new ShoppingListItem(value.toString()));
+
+                        ((ListItemActivity) context).setHintTextToVisible(false);
                     }
                 });
 
@@ -236,6 +251,10 @@ public class ListItemActivity extends Activity {
                         shoppingListItemDao.delete(shoppingListItems.get(i));
                         shoppingListItems.remove(i);
                         notifyDataSetChanged();
+
+                        if (shoppingListItems.size() <= 0)
+                            ((ListItemActivity) context).setHintTextToVisible(true);
+
                     } catch (java.sql.SQLException e) {
                         e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                     }
