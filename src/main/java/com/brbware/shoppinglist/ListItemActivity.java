@@ -54,10 +54,6 @@ public class ListItemActivity extends Activity {
         //TODO: for the adapter to query.
         mainListView.setAdapter(new ShoppingListAdapter(this, R.layout.shopping_list_item));
 
-        //TODO:  This might not be needed, as we should be sorting the list ourselves.
-        // When a new item is added to the list, the view will scroll to the bottom.
-        mainListView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
-
         initAddButton(this);
 
         if (mainListView.getAdapter().getCount() <= 0 )
